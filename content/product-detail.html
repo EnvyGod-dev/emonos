@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бүтээгдэхүүний Дэлгэрэнгүй</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        /* Additional styles for product details */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .product-detail-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .product-detail-container img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-detail-container h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-detail-container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .buy-now-btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #e64a19;
+        }
+
+        .back-to-home {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 14px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        .back-to-home:hover {
+            text-decoration: underline;
+            color: #ff5722;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-detail-container">
+        <img id="product-image" src="" alt="Product Image">
+        <h1 id="product-name">Бүтээгдэхүүний нэр</h1>
+        <p id="product-price">Үнэ</p>
+        <p id="product-description">Энд бүтээгдэхүүний дэлгэрэнгүй тайлбар харагдана.</p>
+        <button class="buy-now-btn">Одоо Худалдан Авах</button>
+        <a href="index.html" class="back-to-home">Нүүр хуудас руу буцах</a>
+    </div>
+
+    <script>
+        // Extract URL parameters
+        const params = new URLSearchParams(window.location.search);
+
+        // Populate product details
+        const productImage = params.get("image");
+        const productName = params.get("name");
+        const productPrice = params.get("price");
+        const productDescription = params.get("description") || "Энэ бүтээгдэхүүний тайлбар харагдахгүй байна.";
+
+        // Render product data
+        document.getElementById("product-image").src = productImage || "images/default-product.jpg";
+        document.getElementById("product-name").textContent = productName;
+        document.getElementById("product-price").textContent = productPrice;
+        document.getElementById("product-description").textContent = productDescription;
+
+        // Add functionality to the Buy Now button
+        document.querySelector(".buy-now-btn").addEventListener("click", () => {
+            alert(`Та "${productName}" бүтээгдэхүүнийг амжилттай захиаллаа!`);
+            window.location.href = "cart.html"; // Redirect to a cart or order page
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сагс</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch("/mainNavFooter/header.html")
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data)
+            .catch(err => console.error('Error loading header:', err));
+    </script>
+
+    <main>
+        <h1>Таны сагс</h1>
+        <div class="cart-container">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Бүтээгдэхүүн</th>
+                        <th>Нэр</th>
+                        <th>Үнэ</th>
+                        <th>Тоо</th>
+                        <th>Нийт</th>
+                        <th>Устгах</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Cart items will be rendered dynamically here -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <h2>Нийт дүн</h2>
+                <p>₮ <span id="cart-total">0</span></p>
+                <button id="checkout-btn" class="checkout-btn">Захиалах</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('../mainNavFooter/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data)
+            .catch(err => console.error('Error loading footer:', err));
+    </script>
+
+    <script src="../scripts/script.js"></script>
+</body>
+
+</html>
